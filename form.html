@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="//via.placeholder.com/100x50" alt="">
+        </div>
+        <div class="secure">
+            <img src="//via.placeholder.com/20x20" alt="">
+            <p>Datos seguros</p>
+        </div>
+    </header>
+
+    <div id="formulario">
+        <h1>Hola, Stuart</h1>
+        <span>Te ofrecemos el mejor programa oncológico para tu tranquilidad y la de tu familia</span>
+        
+        <div class="form">
+            <form id="form" action="#">
+                <div class="form-box">
+                    <div class="col-1">
+                        <label class="asign" for="">¿Cuá es tu edad?</label>
+                        <label class="asign" for="">¿Fumador?</label>
+                        <label class="asign" for="">¿Tienes o has tenido cáncer o alguna enfermedad oncológica?</label>
+                    </div>
+                    <div class="col-2">
+                        <input id="edad" type="number">
+                        <div class="label-box">
+                            <label class="radio" for="smoke-no">No
+                                <input class="input-radio" id="smoke-no" name="smoke" type="radio">
+                            </label>
+                            <label class="radio" for="smoke-si">Si
+                                <input class="input-radio" id="smoke-si" name="smoke" type="radio">
+                            </label>
+                        </div>
+                        <div class="label-box">
+                            <label class="radio" for="cancer-no">No
+                                <input class="input-radio" id="cancer-no" name="cancer" type="radio">
+                            </label>
+                            <label class="radio" for="cancer-si">Si
+                                <input class="input-radio" id="cancer-si" name="cancer" type="radio">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="botones">
+                    <button id="agregar" class="btn agregar">Agregar afiliado</button>
+                    <input class="btn submit" type="submit" value="Ver cotización ahora">
+                </div>
+            </form>
+        </div>
+    
+    </div>
+    
+    <div id="modal-container" class="modal__container">
+        <div class="modal" id="modal">
+            <img id="cerrar" src="//via.placeholder.com/15x15" alt="">
+            <p class="text__modal">
+                El programa Oncoplus es para personas que no presentan antecedentes oncológicos. Déjanos tus datos y nos pondremos en contacto contigo.
+            </p>
+            <input type="text" placeholder="Ingresar nombre"><br>
+            <input type="text" placeholder="Ingresar apellidos"><br>
+            <input type="email" placeholder="Ingresar email">
+            <input type="tel" placeholder="Ingresar celular"><br>
+            <label class="legal" for="check">
+                <input type="checkbox" id="check">
+                He leído y autorizo el <a href="">Tratamiento de Datos Personales</a>
+            </label><br>
+            <button type="submit">Enviar información</button>
+        </div>
+    </div>
+
+    <script>
+        //Modal
+        var edad = document.getElementById('edad');
+        var modal = document.getElementById('modal-container');
+        var cerrar = document.getElementById('cerrar');
+        
+        edad.addEventListener('keyup', function(){
+            if(edad.value > 60){
+                modal.style.display = "flex";
+            }            
+        });
+        edad.addEventListener('click', function(){
+            if(edad.value > 60){
+                modal.style.display = "flex";
+            }                        
+        });
+        cerrar.addEventListener('click', function(){
+            modal.style.display = "none";
+        })
+        //Modal
+        
+        //radios
+        
+        var radios = document.getElementsByClassName('radio');
+
+        for (var i = 0; i < radios.length; i++) {
+            radios[i].addEventListener('click', function(){
+
+                var input = this.getElementsByClassName("input-radio");
+                
+                if(input.checked = true){ 
+
+                    [].forEach.call(this.closest(".label-box").getElementsByClassName('radio'), function(el) {
+                        el.classList.remove("active");
+                    });
+                    
+                    this.classList.add("active");
+                }
+
+            });
+        }
+        
+        //radios
+
+        //agregar cajas
+        // var agregar = document.getElementById('agregar');
+        // var caja = document.getElementsByClassName('form-box')[0];
+        // var clon = caja.cloneNode(true);
+        
+        // agregar.addEventListener('click', function(){
+        //     document.getElementById("form").appendChild(clon);
+        // })
+        //agregar cajas
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="form-principal">
+        <div class="col-formulario">
+            <div class="caja">
+                <img src="http://via.placeholder.com/200x100" alt="">
+                <h1>Cotiza tu programa oncológico a 
+                    <span>tarifa preferencial solo aquí</span></h1>
+                <p>Ponemos a tu disposición el mejor 
+                    staff de médicos oncólogos del país y 
+                    la experiencia de más de 28 años en prevención 
+                    y tratamiento del cáncer.</p>
+                <div class="form-box">
+                    <form action="#">
+
+                        <div class="form-control">
+                            <div class="input-val check"><input class="inputs" type="text" id="nombre" placeholder="Nombre"></div>
+                        </div>
+
+                        <div class="form-control-col">
+                            <div class="input-val uncheck"><input class="inputs" type="email" placeholder="Email"></div> <div class="input-val check"><input class="inputs" type="tel" placeholder="Telefono"></div>
+                        </div>
+
+                        <div class="form-control-radio">
+                            <label class="azul" for="documento">Tipo documento</label>
+                            <div>
+                                <label for="dni">
+                                    <input type="radio" id="dni" name="documento">
+                                    DNI
+                                </label>
+                                <label for="carnet">
+                                    <input type="radio" id="carnet" name="documento">
+                                    Carnet de Extranjería
+                                </label>
+                                <label for="pass">
+                                    <input type="radio" id="pass" name="documento">
+                                    Pasaporte
+                                </label>
+                            </div>                            
+                        </div>
+
+                        <div class="form-control">
+                            <div class="input-val check"><input class="inputs" type="tel" placeholder="N° Documento"></div>
+                        </div>
+
+                        <div class="form-control-label">
+                            <label class="azul" for="personas">¿Cuántas personas deseas afiliar?</label><input class="inputs" id="personas" type="number" onkeydown="limit(this);" onkeyup="limit(this);">
+                        </div>
+                        
+                        <div class="form-control">
+                            <input id="enviar" class="btn" value="Solicitar cotización" type="submit" disabled>
+                        </div>
+
+                    </form>
+                </div>                
+            </div>
+        </div>
+        <div class="col-fondo">
+        </div>
+    </div>
+
+    <script>
+    var input = document.getElementsByClassName('inputs');
+    var boton = document.getElementById('enviar');
+   
+    var myFunction = function() {
+        if(this.value.length > 2 ){
+            console.log(input[i]);
+        }
+        if(input[0].value.length >2 && 
+        input[1].value.length >2 && 
+        input[2].value.length >2 && 
+        input[3].value.length >2 && 
+        input[4].value.length >0){
+            boton.removeAttribute("disabled");
+            boton.classList.add("active");
+        }else{
+            boton.setAttribute("disabled", "");
+            boton.classList.remove("active");
+        }
+    };
+
+    for (var i = 0; i < input.length; i++) {
+        input[i].addEventListener('keyup', myFunction, false);
+    }
+    
+    function limit(element)
+    {
+        var max_chars = 2;
+
+        if(element.value.length > max_chars) {
+            element.value = element.value.substr(0, max_chars);
+        }
+    }
+    </script>
+</body>
+</html>
